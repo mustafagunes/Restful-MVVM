@@ -15,6 +15,9 @@
 		D9823A62225B3F38008D35B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9823A60225B3F38008D35B5 /* LaunchScreen.storyboard */; };
 		D9823A71225B44D4008D35B5 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9823A70225B44D4008D35B5 /* Network.swift */; };
 		D9823A74225B44F8008D35B5 /* NetworkProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9823A73225B44F8008D35B5 /* NetworkProtocols.swift */; };
+		D9DFBFA1225B5A0200C530CE /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DFBFA0225B5A0200C530CE /* NetworkProvider.swift */; };
+		D9DFBFA3225B5B3B00C530CE /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DFBFA2225B5B3B00C530CE /* NetworkResult.swift */; };
+		D9DFBFA5225B5B9700C530CE /* URLPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DFBFA4225B5B9700C530CE /* URLPath.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		D9823A63225B3F38008D35B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9823A70225B44D4008D35B5 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		D9823A73225B44F8008D35B5 /* NetworkProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocols.swift; sourceTree = "<group>"; };
+		D9DFBFA0225B5A0200C530CE /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
+		D9DFBFA2225B5B3B00C530CE /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
+		D9DFBFA4225B5B9700C530CE /* URLPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLPath.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +56,6 @@
 				419A2EDF2A380C81255F07F4 /* Pods-Restful-MVVM.debug.xcconfig */,
 				4D4E6461F8CBD2522EECD0C1 /* Pods-Restful-MVVM.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -139,6 +144,9 @@
 			isa = PBXGroup;
 			children = (
 				D9823A70225B44D4008D35B5 /* Network.swift */,
+				D9DFBFA4225B5B9700C530CE /* URLPath.swift */,
+				D9DFBFA2225B5B3B00C530CE /* NetworkResult.swift */,
+				D9DFBFA0225B5A0200C530CE /* NetworkProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -273,8 +281,11 @@
 			files = (
 				D9823A74225B44F8008D35B5 /* NetworkProtocols.swift in Sources */,
 				D9823A5A225B3F37008D35B5 /* ViewController.swift in Sources */,
+				D9DFBFA5225B5B9700C530CE /* URLPath.swift in Sources */,
 				D9823A58225B3F37008D35B5 /* AppDelegate.swift in Sources */,
+				D9DFBFA3225B5B3B00C530CE /* NetworkResult.swift in Sources */,
 				D9823A71225B44D4008D35B5 /* Network.swift in Sources */,
+				D9DFBFA1225B5A0200C530CE /* NetworkProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

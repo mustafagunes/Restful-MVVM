@@ -10,21 +10,20 @@ import SwiftyJSON
 
 class Network: NetworkProtocols {
     
-    func request(_ url: String, method: ServiceHTTPMethod, completion: @escaping (APIResult) -> Void) {
-        self.fetchData(url, method: method, parameters: nil) { (result) in
-            completion(result)
-        }
+    // MARK : - Does not take parameters.
+    static func request(_ url: BaseURLPath, method: ServiceHTTPMethod, completion: @escaping (APIResult) -> Void) {
+        self.fetchData(url, method: method, parameters: nil, completion: completion)
     }
     
-    func request(_ url: String, method: ServiceHTTPMethod, parameters: [String : Any], completion: @escaping (APIResult) -> Void) {
-        self.fetchData(url, method: method, parameters: parameters) { (result) in
-            completion(result)
-        }
+    // MARK : - It takes the parameter.
+    static func request(_ url: BaseURLPath, method: ServiceHTTPMethod, parameters: [String : Any], completion: @escaping (APIResult) -> Void) {
+        self.fetchData(url, method: method, parameters: parameters, completion: completion)
     }
     
-    func fetchData(_ Url: String, method: ServiceHTTPMethod, parameters: [String : Any]?, completion: @escaping (APIResult) -> Void) {
+    // MARK : - FetchData Method
+    static func fetchData(_ Url: BaseURLPath, method: ServiceHTTPMethod, parameters: [String : Any]?, completion: @escaping (APIResult) -> Void) {
         
-        var urlRequest = URLRequest(url: URL(string: Url)!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
+        var urlRequest = URLRequest(url: URL(string: Url.path)!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10)
         urlRequest.httpMethod = method.rawValue
         
         if let parameters = parameters {
@@ -42,8 +41,7 @@ class Network: NetworkProtocols {
             else if let data = data ,let responseCode = response as? HTTPURLResponse {
                 do {
                     let responseJson = try JSON(data: data)
-                    print("responseCode : \(responseCode.statusCode)")
-                    print("responseJSON : \(responseJson)")
+                    print("responseCode : \(responseCode.statusCode) \n")
                     switch responseCode.statusCode {
                     case 200:
                         completion(APIResult.success(responseJson))
