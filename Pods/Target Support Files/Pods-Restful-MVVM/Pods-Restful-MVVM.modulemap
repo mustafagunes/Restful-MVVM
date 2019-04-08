@@ -1,0 +1,6 @@
+framework module Pods_Restful_MVVM {
+  umbrella header "Pods-Restful-MVVM-umbrella.h"
+
+  export *
+  module * { export * }
+}
