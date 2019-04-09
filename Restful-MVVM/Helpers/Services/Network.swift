@@ -34,29 +34,31 @@ class Network: NetworkProtocols {
         }
         
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-            if let error = error {
-                print(error)
-                completion(APIResult.failure(.connectionError))
-            }
-            else if let data = data ,let responseCode = response as? HTTPURLResponse {
-                do {
-                    let responseJson = try JSON(data: data)
-                    print("responseCode : \(responseCode.statusCode) \n")
-                    switch responseCode.statusCode {
-                    case 200:
-                        completion(APIResult.success(responseJson))
-                    case 400...499:
-                        completion(APIResult.failure(.authorizationError(responseJson)))
-                    case 500...599:
-                        completion(APIResult.failure(.serverError))
-                    default:
-                        completion(APIResult.failure(.unknownError))
-                        break
-                    }
+            DispatchQueue.main.async() {
+                if let error = error {
+                    print(error)
+                    completion(APIResult.failure(.connectionError))
                 }
-                catch let parseJSONError {
-                    completion(APIResult.failure(.unknownError))
-                    print("error on parsing request to JSON : \(parseJSONError)")
+                else if let data = data ,let responseCode = response as? HTTPURLResponse {
+                    do {
+                        let responseJson = try JSON(data: data)
+                        print("responseCode : \(responseCode.statusCode) \n")
+                        switch responseCode.statusCode {
+                        case 200:
+                            completion(APIResult.success(responseJson))
+                        case 400...499:
+                            completion(APIResult.failure(.authorizationError(responseJson)))
+                        case 500...599:
+                            completion(APIResult.failure(.serverError))
+                        default:
+                            completion(APIResult.failure(.unknownError))
+                            break
+                        }
+                    }
+                    catch let parseJSONError {
+                        completion(APIResult.failure(.unknownError))
+                        print("error on parsing request to JSON : \(parseJSONError)")
+                    }
                 }
             }
         }.resume()
