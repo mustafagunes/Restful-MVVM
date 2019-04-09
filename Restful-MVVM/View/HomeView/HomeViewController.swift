@@ -51,17 +51,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? HomeCollectionViewCell
         
-        // MARK : - Cell Layer Setup
-        cell?.layer.borderColor = UIColor.lightGray.cgColor
-        cell?.layer.borderWidth = 0.6
-        cell?.layer.cornerRadius = 10
-        cell?.clipsToBounds = true
-        cell?.layer.masksToBounds = false
-        cell?.layer.shadowColor = UIColor.lightGray.cgColor
-        cell?.layer.shadowOffset = CGSize(width: -1, height: 1)
-        cell?.layer.shadowRadius = 5
-        cell?.layer.shadowOpacity = 0.2
-        
         cell?.titleLabel.text = cellTitleArray[indexPath.row]
         cell?.imageView.image = cellImageArray[indexPath.row]
         
